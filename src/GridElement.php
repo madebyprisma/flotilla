@@ -6,6 +6,7 @@ use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -19,7 +20,8 @@ class GridElement extends BaseElement {
 
 	private static $db = [
 		"Columns" => "Int",
-		"Rows" => "Int"
+		"Rows" => "Int",
+		"Alignment" => "Varchar(64)"
 	];
 
 	private static $has_many = [
@@ -53,6 +55,12 @@ class GridElement extends BaseElement {
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+
+		$fields->addFieldToTab("Root.Main", new DropdownField("Alignment", "Alignment", [
+			"flex-start" => "Top",
+			"center" => "Center",
+			"flex-end" => "Bottom"
+		]));
 
 		$config = new GridFieldConfig_RecordEditor();
 

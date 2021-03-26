@@ -2,7 +2,12 @@
 	"name": "madebyprisma/flotilla",
 	"description": "A rapid, robust, grid-based element for SilverStripe Elemental",
 	"require": {
-		"dnadesign/silverstripe-elemental": "^4",
+		"dnadesign/silverstripe-elemental": "4",
 		"undefinedoffset/sortablegridfield": "^2.0"
+	},
+	"extra": {
+        "expose": [
+            "kit"
+        ]
 	}
 }

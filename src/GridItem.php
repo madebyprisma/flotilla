@@ -9,8 +9,7 @@ class GridItem extends DataObject {
 	private static $table_name = "MadeByPrisma_Flotilla_GridItem";
 	private static $db = [
 		"SortOrder" => "Int",
-		"Start" => "Varchar(64)",
-		"End" => "Varchar(64)"
+		"Placement" => "Varchar(64)"
 	];
 
 	private static $summary_fields = [
@@ -45,22 +44,19 @@ class GridItem extends DataObject {
 		]);
 		
 		$fields->addFieldsToTab("Root.Main", [
-			new AreaField("Start", "Start", $this->Grid()->Columns, $this->Grid()->Rows, $this->Start),
-			new AreaField("End", "End", $this->Grid()->Columns, $this->Grid()->Rows, $this->End)
+			new AreaField("Placement", "Placement", $this->Grid()->Columns, $this->Grid()->Rows, new Rect($this->Placement)),
 		]);
 
 		return $fields;
 	}
 
 	public function getLayout() {
-		$start = explode(",", $this->Start);
-		$end = explode(",", $this->End);
+		$rect = new Rect($this->Placement);
 
-		$sx = count($start) > 0 ? (int)$start[0] + 1 : 1;
-		$sy = count($start) > 1 ? (int)$start[1] + 1 : 1;
-
-		$ex = count($end) > 0 ? (int)$end[0] + 1 : 1;
-		$ey = count($end) > 1 ? (int)$end[1] + 1 : 1;
+		$sx = $rect->getField("StartX") + 1;
+		$sy = $rect->getField("StartY") + 1;
+		$ex = $rect->getField("EndX") + 2;
+		$ey = $rect->getField("EndY") + 2;
 
 		return "--start-x: $sx; --start-y: $sy; --end-x: $ex; --end-y: $ey;";
 	}

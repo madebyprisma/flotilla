@@ -1,0 +1,17 @@
+.field.area input {
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 2px;
+	width: 13px;
+	height: 13px;
+}
+
+.field.area input.inner {
+	background-color: #ced5e1;
+}
+
+.field.area input:checked {
+	background-color: #004e7f;
+}
