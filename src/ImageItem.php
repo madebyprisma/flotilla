@@ -15,6 +15,10 @@ class ImageItem extends GridItem {
 		"Image"
 	];
 
+	public function getTitle() {
+		return $this->ImageID ? $this->Image()->getTitle() : "No Image";
+	}
+
 	public function getType() {
 		return "Image";
 	}

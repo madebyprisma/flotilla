@@ -31,6 +31,10 @@ use MadeByPrisma\Flotilla\GridItem;
 class CustomItem extends GridItem {
 	...
 
+	public function getTitle() {
+		return "...";
+	}
+
 	public function getType() {
 		return "Custom";
 	}
@@ -38,3 +42,17 @@ class CustomItem extends GridItem {
 ```
 
 **Note:** Each GridItem is rendered based on it's class and namespace, so in this example our item would try and render `Elements\GridItems\CustomItem.ss`.
+
+`GridElement` extensions:
+
+```php
+<?php
+
+use SilverStripe\ORM\DataExtension;
+
+class GridElementExtension extends DataExtension {
+	public function getExtraStyles() {
+		return "...";
+	}
+}
+```

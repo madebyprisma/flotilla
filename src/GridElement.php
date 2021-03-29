@@ -84,6 +84,14 @@ class GridElement extends BaseElement {
 		return $fields;
 	}
 
+	public function getExtraStyles() {
+		return "--margin: 50px;";
+	}
+
+	public function getStyle() {
+		return "--columns: $this->Columns; --rows: $this->Rows; --gap: $this->Gap; --alignment: $this->Alignment;" . $this->getExtraStyles();
+	}
+
 	public function getType() {
 		return "Grid";
 	}
