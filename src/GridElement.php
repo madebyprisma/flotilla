@@ -18,6 +18,11 @@ class GridElement extends BaseElement {
 	private static $table_name = "MadeByPrisma_Flotilla_GridElement";
 	private static $inline_editable = false;
 
+	private static $gap = "8px";
+	private static $columns = 12;
+	private static $rows = 0;
+	private static $breakpoint = "700px";
+
 	private static $db = [
 		"Columns" => "Int",
 		"Rows" => "Int",
@@ -55,6 +60,8 @@ class GridElement extends BaseElement {
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+
+		$fields->removeByName("Items");
 
 		$fields->addFieldToTab("Root.Main", new DropdownField("Alignment", "Alignment", [
 			"flex-start" => "Top",
