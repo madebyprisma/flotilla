@@ -8,7 +8,7 @@ use SilverStripe\View\Requirements;
 
 class PageExtension extends DataExtension {
 	public function onAfterInit() {
-		// We need to generate the CSS here so that $breakpoint can be dynamic
+		// We need to generate the CSS here so that default configuration can be dynamic
 
 		$gap = Config::inst()->get(GridElement::class, "gap");
 		$rows = max(Config::inst()->get(GridElement::class, "rows"), 1);
@@ -36,8 +36,8 @@ $css = "/** Flotilla Grid Stylesheet */
 	}
 
 	.madebyprisma__flotilla__gridelement .grid-item {
-		grid-column: var(--flo-start-x) / var(--flo-end-x);
-		grid-row: var(--flo-start-y) / var(--flo-end-y);
+		grid-column: var(--flo-sx) / var(--flo-ex);
+		grid-row: var(--flo-sy) / var(--flo-ey);
 	}
 }
 

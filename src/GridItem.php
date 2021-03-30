@@ -58,7 +58,7 @@ class GridItem extends DataObject {
 		$ex = $rect->getField("EndX") + 2;
 		$ey = $rect->getField("EndY") + 2;
 
-		return "--start-x: $sx; --start-y: $sy; --end-x: $ex; --end-y: $ey;";
+		return "--flo-sx: $sx; --flo-sy: $sy; --flo-ex: $ex; --flo-ey: $ey;";
 	}
 
 	public function setTemplate($template) {

@@ -11,15 +11,15 @@ Just install from composer and run `/dev/build` and you're good to go!
 Example yaml configuration:
 ```yaml
 MadeByPrisma\Flotilla\GridElement:
-  gap: 8px # Specifies the grid gap used on all grids
+  gap: 8px # Specifies the default grid gap
   columns: 12 # Specifies the default column count, which can be changed for each grid
   rows: 5 # Same as columns, except rows
   breakpoint: 700px # Specifies the breakpoint between normal and vertical layouts on all grids
   spacing: # Spacing options
-    None: "0px" # Allows assignment of default value
+    None: "0px" # Use any CSS measurement, which will be used at all sizes
     Small: "20px"
     Medium:
-      desktop: "50px" # Add "desktop" _and_ "mobile" to allow for responsive spacing
+      desktop: "50px" # Add "desktop" _and_ "mobile" properties to allow for responsive spacing
       mobile: "30px"
     Large:
       desktop: "100px"
