@@ -11,7 +11,10 @@ class TextItem extends GridItem {
 	];
 
 	public function getTitle() {
-		return substr(Convert::html2raw($this->Content), 0, 50);
+		$raw = Convert::html2raw($this->Content);
+		$summary = str_replace("\n", " ", substr($raw, 0, 50));
+
+		return $summary . (strlen($summary) < strlen($raw) ? "..." : "");
 	}
 
 	public function getType() {

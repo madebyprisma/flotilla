@@ -10,32 +10,46 @@ class PageExtension extends DataExtension {
 	public function onAfterInit() {
 		// We need to generate the CSS here so that $breakpoint can be dynamic
 
+		$gap = Config::inst()->get(GridElement::class, "gap");
+		$rows = max(Config::inst()->get(GridElement::class, "rows"), 1);
+		$columns = max(Config::inst()->get(GridElement::class, "columns"), 1);
 		$breakpoint = Config::inst()->get(GridElement::class, "breakpoint");
 
 $css = "/** Flotilla Grid Stylesheet */
 
+:root {
+	--flo-gap: $gap;
+	--flo-rows: $rows;
+	--flo-columns: $columns;
+	--flo-alignment: flex-start;
+}
+
 @media not screen and (max-width: $breakpoint) {
 	.madebyprisma__flotilla__gridelement .grid {
 		display: grid;
-		grid-template-rows: repeat(var(--rows), 1fr);
-		grid-template-columns: repeat(var(--columns), 1fr);
-		gap: var(--gap);
-		align-items: var(--alignment);
+		grid-template-rows: repeat(var(--flo-rows), 1fr);
+		grid-template-columns: repeat(var(--flo-columns), 1fr);
+		gap: var(--flo-gap);
+		align-items: var(--flo-alignment);
+		margin-top: var(--flo-margin-top-desktop, var(--flo-margin-top, 0px));
+		margin-bottom: var(--flo-margin-bottom-desktop, var(--flo-margin-bottom, 0px));
 	}
 
 	.madebyprisma__flotilla__gridelement .grid-item {
-		grid-column: var(--start-x) / var(--end-x);
-		grid-row: var(--start-y) / var(--end-y);
+		grid-column: var(--flo-start-x) / var(--flo-end-x);
+		grid-row: var(--flo-start-y) / var(--flo-end-y);
 	}
 }
 
 @media screen and (max-width: $breakpoint) {
 	.madebyprisma__flotilla__gridelement .grid {
 		display: grid;
-		grid-template-rows: repeat(var(--rows), auto);
+		grid-template-rows: repeat(var(--flo-rows), auto);
 		grid-template-columns: 1fr;
 		align-items: center;
-		gap: var(--gap);
+		gap: var(--flo-gap);
+		margin-top: var(--flo-margin-top-mobile, var(--flo-margin-top, 0px));
+		margin-bottom: var(--flo-margin-bottom-mobile, var(--flo-margin-bottom, 0px));
 	}
 }
 ";

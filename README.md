@@ -15,6 +15,15 @@ MadeByPrisma\Flotilla\GridElement:
   columns: 12 # Specifies the default column count, which can be changed for each grid
   rows: 5 # Same as columns, except rows
   breakpoint: 700px # Specifies the breakpoint between normal and vertical layouts on all grids
+  spacing: # Spacing options
+    None: "0px" # Allows assignment of default value
+    Small: "20px"
+    Medium:
+      desktop: "50px" # Add "desktop" _and_ "mobile" to allow for responsive spacing
+      mobile: "30px"
+    Large:
+      desktop: "100px"
+      mobile: "60px"
 ```
 
 ## Extension
@@ -29,8 +38,6 @@ namespace Elements\GridItems;
 use MadeByPrisma\Flotilla\GridItem;
 
 class CustomItem extends GridItem {
-	...
-
 	public function getTitle() {
 		return "...";
 	}
