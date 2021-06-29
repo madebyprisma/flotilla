@@ -43,7 +43,8 @@ class GridElement extends BaseElement {
 		"Gap" => "Varchar(16)",
 		"Alignment" => "Varchar(64)",
 		"MarginTop" => "Varchar(64)",
-		"MarginBottom" => "Varchar(64)"
+		"MarginBottom" => "Varchar(64)",
+		"Width" => "Enum('standard, narrow, x-narrow','standard')",
 	];
 
 	private static $has_many = [
@@ -84,6 +85,11 @@ class GridElement extends BaseElement {
 				"flex-start" => "Top",
 				"center" => "Center",
 				"flex-end" => "Bottom"
+			]),
+			new DropdownField("Width", "Width", [
+				"standard" => "Standard",
+				"narrow" => "Narrow",
+				"x-narrow" => "X-Narrow"
 			]),
 			new NumericField("Rows", "Rows"),
 			new NumericField("Columns", "Columns"),
