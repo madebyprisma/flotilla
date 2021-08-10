@@ -27,7 +27,7 @@ $css = "/** Flotilla Grid Stylesheet */
 @media not screen and (max-width: $breakpoint) {
 	.madebyprisma__flotilla__gridelement .grid {
 		display: grid;
-		grid-template-rows: repeat(var(--flo-rows), 1fr);
+		grid-template-rows: repeat(var(--flo-rows), auto);
 		grid-template-columns: repeat(var(--flo-columns), 1fr);
 		gap: var(--flo-gap);
 		align-items: var(--flo-alignment);
